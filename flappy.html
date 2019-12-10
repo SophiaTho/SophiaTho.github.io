@@ -8,10 +8,12 @@
      <h1>FLAPPY NEON CAT</h1>
      <p>Have fun playing</p>
      <script type="text/processing"> 
-     int gameState, counter;
+     int gameState, counter, highCounter;
      int imx, imy, nx, ny, g, Vny;
      PImage photo, neo, ruler, topRuler;
      int[] rulerX, rulerY;
+
+
 
      
      void setup(){
@@ -85,10 +87,13 @@
          }
          else if(nx == rulerX[i]){
            counter++;
+            if(counter > highCounter){
+               highCounter++;
+               }
+            }
          }
-       }
        
-     }
+      }
      }
      void cat(){
        image(neo,nx,ny);
@@ -103,6 +108,7 @@
      void score(){
        fill(255);
        textSize(20);
+       text("Highscore:"+highCounter, width-300, 40);
        text("Score:"+ counter, width - 120,40);
      }
      void mousePressed(){
